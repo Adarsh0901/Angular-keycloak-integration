@@ -1,0 +1,116 @@
+<div class="container-fluid mt-4">
+  <div class="d-flex justify-content-end m-4">
+    <button class="btn btn-success">Add User</button>
+  </div>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userList">
+        <th scope="row">{{ user.id }}</th>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-primary mr-2"
+            data-toggle="modal"
+            data-target="#editModal"
+            (click)="
+              editId.id = user.id;
+              editId.username = user.username;
+              editId.email = user.email
+            "
+          >
+            edit
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="deleteUser(user.id)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Model -->
+  <div
+    class="modal fade"
+    id="editModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="editModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Edit User</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group row">
+              <label for="UID" class="col-sm-2 col-form-label">UID</label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  readonly
+                  class="form-control-plaintext"
+                  id="UID"
+                  value="{{ editId.id }}"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="username" class="col-sm-2 col-form-label"
+                >Username</label
+              >
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  value="{{ editId.username }}"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="email" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  value="{{ editId.email }}"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
