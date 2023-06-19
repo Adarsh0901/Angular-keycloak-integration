@@ -21,6 +21,36 @@ export class UserService {
     }
   }
 
+  addUserData(data: any): any {
+    try {
+      let dataObj = {
+        method: 'post',
+        api_url: 'http://localhost:3000/userList',
+        param_data: data,
+      };
+      let resp = this._commonService.fetchData(dataObj);
+      console.log(resp);
+      return resp;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  updateUserData(data: any): any {
+    try {
+      let dataObj = {
+        method: 'put',
+        api_url: `http://localhost:3000/userList/${data.id}`,
+        param_data: data,
+      };
+      let resp = this._commonService.fetchData(dataObj);
+      console.log(resp);
+      return resp;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   deleteUserData(id: any): any {
     try {
       let dataObj = {

@@ -7,19 +7,19 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { initializeKeycloak } from './utils/keycloak.init';
-import { ClientComponent } from './client/client.component';
 import { UserComponent } from './user/user.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     DashboardPageComponent,
-    ClientComponent,
     UserComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     KeycloakAngularModule,
     HttpClientModule,

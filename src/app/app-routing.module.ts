@@ -4,7 +4,6 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { AuthGuard } from './Guards/KeycloakAuthGuard.guard';
 import { UserComponent } from './user/user.component';
-import { ClientComponent } from './client/client.component';
 
 const routes: Routes = [
   {
@@ -25,11 +24,6 @@ const routes: Routes = [
     path: 'user',
     canActivate: [AuthGuard],
     component: UserComponent,
-  },
-  {
-    path: 'client',
-    canActivate: [AuthGuard],
-    component: ClientComponent,
   },
 ];
 
